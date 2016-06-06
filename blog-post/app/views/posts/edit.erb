@@ -2,20 +2,20 @@
 
 <form action="/posts/<%= @post.id %>" method="post">
 	<input type="hidden" name="_method" value="PATCH">
-		<p>
-		  <label>Update Post Title</label>
-		  <input type="text" name="post[title]" value="<%= @post.title %>"/>
-	  </p>
+  <p>
+  	<label>Update Post Title</label>
+  	<input type="text" name="post[title]" value="<%= @post.title %>"/>
+  </p>
 
-	  <p>
-		  <label>Author</label>
-		  <input type="text" name="author_name" value="<%= @post.author.name %>"/>
-	  </p>
+  <p>
+  	<label>Author</label>
+  	<input type="text" name="author_name" value="<%= @post.author.name %>"/>
+  </p>
 
-		<p>
-	  <label>Post Content</label>
-		  <TEXTAREA NAME="post[content]" value="<%= @post.content %>"></TEXTAREA>
-	  </p>
+  <p>
+  	<label>Post Content</label>
+  	<TEXTAREA NAME="post[content]" value="<%= @post.content %>"></TEXTAREA>
+  </p>
 
-	  <input type="submit" value="Update" id="submit" />
+  <input type="submit" value="Update" id="submit" />
 </form>
