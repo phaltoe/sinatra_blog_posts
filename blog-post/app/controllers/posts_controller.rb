@@ -10,15 +10,27 @@ class PostsController < ApplicationController
 	end
 
 	post '/posts' do 
-		@post = Post.create(params[:post])
+		@post = Post.new(params[:post])
+		@post.author = Author.find_or_create_by(:name => params[:author_name])
+		@post.save
 
 		redirect ("/posts/#{@post.id}")
-		raise params.inspect
-		# @post = Post.find_
 	end
 
 	get '/posts/:id' do
 		@post = Post.find(params[:id])
 		erb :'/posts/show'
+	end
+
+	get '/posts/:id/edit' do
+		@post = Post.find(params[:id])
+		erb :'/posts/edit'
+	end
+
+	patch '/posts/:id' do
+		@post = Post.find(params[:id])
+		@post.author = Author.find_or_create_by(:name => params[:author_name])
+		@post.update(params[:post])
+		redirect ("posts/#{@post.id}")
 	end
 end
