@@ -26,6 +26,7 @@ class PostsController < ApplicationController
   end
 
   get '/posts/:id/edit' do
+    @tags = Tag.all
     @post = Post.find(params[:id])
 
     erb :'/posts/edit'

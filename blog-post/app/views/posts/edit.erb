@@ -17,5 +17,14 @@
     <TEXTAREA NAME="post[content]" value="<%= @post.content %>"></TEXTAREA>
   </p>
 
+  <ul>
+    <% @tags.each do |tag| %>
+     <li> <input type="checkbox"  name="post[tag_ids][]"  value="<%= tag.id %>"> <%= tag.name %> </li>
+    <% end %> 
+  </br>
+    <li>Other: <input type="text" name="post[tags_to_add_by_name]"></li> 
+  </ul>
+
+  </br>
   <input type="submit" value="Update" id="submit" />
 </form>

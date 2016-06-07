@@ -16,13 +16,16 @@
     <TEXTAREA NAME="post[content]"></TEXTAREA>
   </p>
 
+  </br>
   <ul>
     <label>Tags:</label>
     <% @tags.each do |tag| %>
-     <li> <%= tag.name %> <input type="checkbox" name="post[tag_ids][]" value="<%= tag.id %>"></li>
+     <li><input type="checkbox" name="post[tag_ids][]" value="<%= tag.id %>"> <%= tag.name %> </li>
     <% end %> 
-      <li>Other: <input type="text" name="post[tags_to_add_by_name]"></li> 
+    </br>    
+    <li>Other: <input type="text" name="post[tags_to_add_by_name]"></li> 
   </ul>
 
+  </br>
   <input type="submit" value="Submit" id="submit" />
 </form>
