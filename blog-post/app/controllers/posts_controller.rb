@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   get '/posts' do
     @posts = Post.all
-    
+
     erb :'/posts/index'
   end
 
@@ -36,5 +36,11 @@ class PostsController < ApplicationController
     @post.update(params[:post])
 
     redirect ("posts/#{@post.id}")
+  end
+
+  delete '/posts/:id/delete' do 
+    @post = Post.find_by_id(params[:id])
+    @post.delete
+    redirect to '/posts'
   end
 end
