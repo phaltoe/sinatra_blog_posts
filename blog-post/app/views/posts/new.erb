@@ -7,14 +7,21 @@
   </p>
 
   <p>
-  	<label>Author</label>
-  	<input type="text" name="author_name"/>
+  	<label>Author Name</label>
+  	<input type="text" name="post[author_name]"/>
   </p>
 
   <p>
     <label>Post Content</label>
     <TEXTAREA NAME="post[content]"></TEXTAREA>
-  </p>	
+  </p>
+
+  <ul>
+    <label>Tags:</label>
+    <% @tags.each do |tag| %>
+     <li> <%= tag.name %> <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>"></li>
+    <% end %>  
+  </ul>
 
   <input type="submit" value="Submit" id="submit" />
 </form>

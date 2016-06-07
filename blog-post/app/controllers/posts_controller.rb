@@ -6,15 +6,23 @@ class PostsController < ApplicationController
   end
 
   get '/posts/new' do
+    @tags = Tag.all
+
     erb :'/posts/new'
   end
 
   post '/posts' do
-    @post = Post.new(params[:post])
-    @post.author = Author.find_or_create_by(:name => params[:author_name])
-    @post.save
+    post = Post.new(params[:post])
 
-    redirect ("/posts/#{@post.id}")
+    tag_ids = params[:tag_ids]
+    
+    tag_ids.each do |tag_id|
+      post.post_tags.build(:tag_id => tag_id)
+    end
+
+    post.save
+
+    redirect ("/posts/#{post.id}")
   end
 
   get '/posts/:id' do
@@ -29,7 +37,7 @@ class PostsController < ApplicationController
 
   patch '/posts/:id' do
     @post = Post.find(params[:id])
-    @post.author = Author.find_or_create_by(:name => params[:author_name])
+    # @post.author = Author.find_or_create_by(:name => params[:author_name])
     @post.update(params[:post])
     redirect ("posts/#{@post.id}")
   end
