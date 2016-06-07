@@ -13,13 +13,6 @@ class PostsController < ApplicationController
 
   post '/posts' do
     post = Post.new(params[:post])
-
-    tag_ids = params[:tag_ids]
-    
-    tag_ids.each do |tag_id|
-      post.post_tags.build(:tag_id => tag_id)
-    end
-
     post.save
 
     redirect ("/posts/#{post.id}")

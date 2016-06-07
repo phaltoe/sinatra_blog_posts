@@ -2,6 +2,9 @@
 <h3> Written By: <%= @post.author.name %></h3>
 <h5><%= @post.content %> </h5>
 
+<h6><%= @post.tags.collect(&:name).join(", ") %></h6>
+
+
 <form action="/posts/<%= @post.id %>/edit">
   <input type="submit" value="Edit">
 </form>

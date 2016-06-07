@@ -19,8 +19,9 @@
   <ul>
     <label>Tags:</label>
     <% @tags.each do |tag| %>
-     <li> <%= tag.name %> <input type="checkbox" name="tag_ids[]" value="<%= tag.id %>"></li>
-    <% end %>  
+     <li> <%= tag.name %> <input type="checkbox" name="post[tag_ids][]" value="<%= tag.id %>"></li>
+    <% end %> 
+      <li>Other: <input type="text" name="post[tags_to_add_by_name]"></li> 
   </ul>
 
   <input type="submit" value="Submit" id="submit" />
